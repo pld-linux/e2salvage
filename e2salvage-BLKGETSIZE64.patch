@@ -1,0 +1,11 @@
+--- e2salvage-0.0.8a/src/main.c~	2003-10-07 20:49:37.000000000 +0000
++++ e2salvage-0.0.8a/src/main.c	2003-10-16 11:07:40.000000000 +0000
+@@ -10,6 +10,8 @@
+ #include <linux/hdreg.h>
+ #include <time.h>
+ 
++#define BLKGETSIZE64 _IOR(0x12,114,sizeof(u64))
++
+ /* here is a dirty i386 linux workaround */
+ typedef unsigned long long u64;
+ 
