@@ -7,7 +7,7 @@ License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/e2salvage/%{name}-%{version}.tbz2
 # Source0-md5:	029608f5f42890aabd1a2c889de859ad
-Patch0:		%{name}-BLKGETSIZE64.patch
+Patch0:		%{name}-linux_types.patch
 URL:		http://e2salvage.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -36,7 +36,7 @@ inne zawiedzie, katalogi s± pod³±czane do g³ównego katalogu.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch0
 
 %build
 %{__libtoolize}
