@@ -1,0 +1,11 @@
+--- src/main.h~	2003-10-07 20:49:37.000000000 +0000
++++ src/main.h	2004-03-22 15:54:37.000000000 +0000
+@@ -2,7 +2,7 @@
+ #define _MAIN_H
+ 
+ #include <linux/fs.h>
+-#include <sys/types.h>
++#include <linux/types.h>
+ 
+ extern unsigned long blocksize;
+ extern unsigned long nr_blocks;
