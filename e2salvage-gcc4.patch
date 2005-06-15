@@ -1,0 +1,110 @@
+
+ dirops.c             |   10 +++++++---
+ find_inodes.c        |    1 +
+ salvage_dir_inodes.c |   18 ++----------------
+ user_interface.c     |    1 +
+ write_inodes.c       |    1 +
+ 5 files changed, 12 insertions(+), 19 deletions(-)
+
+--- e2salvage-0.0.8a/src/dirops.c.orig	2003-10-07 22:49:36.000000000 +0200
++++ e2salvage-0.0.8a/src/dirops.c	2005-06-15 21:39:52.000000000 +0200
+@@ -20,13 +20,13 @@
+ 
+ 	myreclen = EXT2_DIR_REC_LEN(strlen(name));
+ 
+-	for (dirent = (struct ext2_dir_entry_2 *)block; (void *)dirent < ((void *)block)+blocksize; ((void *)dirent) += dirent->rec_len) {
++	for (dirent = (struct ext2_dir_entry_2 *)block; (void *)dirent < ((void *)block) + blocksize; dirent = (void*)dirent + dirent->rec_len) {
+ 		if (dirent->rec_len - dirent->name_len >= myreclen) {
+ 			orig_rec_len = dirent->rec_len;
+ 			dirent->rec_len = EXT2_DIR_REC_LEN(dirent->name_len);
+ 			orig_rec_len -= dirent->rec_len;
+ 
+-			((void *)dirent) += dirent->rec_len;
++			dirent = (void*)dirent + dirent->rec_len;
+ 
+ 			dirent->inode = inum;
+ 			dirent->rec_len = orig_rec_len;
+@@ -42,7 +42,11 @@
+ int dirent_del(char * block, __u32 inum, __u32 lost_found_ino)
+ {
+ 	struct ext2_dir_entry_2 * dirent, * ldirent;
+-	for (ldirent = NULL, dirent = (struct ext2_dir_entry_2 *)block; (void *)dirent < ((void *)block)+blocksize; ldirent = dirent, ((void *)dirent) += dirent->rec_len)
++	for (ldirent = NULL,
++	    dirent = (struct ext2_dir_entry_2 *)block;
++	    (void *)dirent < ((void *)block)+blocksize;
++	    ldirent = dirent,
++	    dirent = (void*)dirent + dirent->rec_len)
+ 		if (dirent->inode == inum) {
+ 			if (!ldirent) {
+ 				fprintf(stderr, "Internal error 32762:6448\n");
+--- e2salvage-0.0.8a/src/find_inodes.c.orig	2003-10-07 22:49:37.000000000 +0200
++++ e2salvage-0.0.8a/src/find_inodes.c	2005-06-15 21:40:34.000000000 +0200
+@@ -4,6 +4,7 @@
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include <fcntl.h>
++#include <string.h>
+ #include <unistd.h>
+ 
+ #include "main.h"
+--- e2salvage-0.0.8a/src/salvage_dir_inodes.c.orig	2003-10-07 22:49:37.000000000 +0200
++++ e2salvage-0.0.8a/src/salvage_dir_inodes.c	2005-06-15 21:42:33.000000000 +0200
+@@ -6,6 +6,7 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <fcntl.h>
++#include <string.h>
+ #include <time.h>
+ #include <linux/ext2_fs.h>
+ 
+@@ -48,21 +49,6 @@
+ 	return(p);
+ }
+ 
+-static int invalid_inode_block( __u32 block )
+-{ struct mem_inode_s *p;
+-	for(p=mem_inodes;p!=NULL;p=p->next)
+-		if( p->block==block )
+-		{	p->to_block=0;
+-			p->inode_nr=0;
+-			p->need_to_write=1;
+-			if(p->ok)
+-			{	fprintf(stderr,"!!!!!!!!!!\n");
+-				p->ok=0;
+-			}
+-		}
+-	return(1);
+-}
+-
+ static int set_inode_number_block( struct mem_inode_s *ib, __u32 num )
+ { struct mem_inode_s *p;
+   __u32 inum,block;
+@@ -102,7 +88,7 @@
+ 
+ static int fix_two_inode_bloks( struct mem_inode_s *ib, struct mem_inode_s *in )
+ { struct mem_inode_s *p;
+-  int i,ofs[128],nofs=0;
++  int ofs[128], nofs=0;
+   __u32 inum;
+ 	if( ib->block_offset!=in->block_offset )
+ 	{	set_inode_number_block(ib,in->inode_nr);
+--- e2salvage-0.0.8a/src/user_interface.c.orig	2003-10-07 22:49:37.000000000 +0200
++++ e2salvage-0.0.8a/src/user_interface.c	2005-06-15 21:41:22.000000000 +0200
+@@ -4,6 +4,7 @@
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include <fcntl.h>
++#include <string.h>
+ #include <unistd.h>
+ 
+ #include "disk.h"
+--- e2salvage-0.0.8a/src/write_inodes.c.orig	2003-10-07 22:49:37.000000000 +0200
++++ e2salvage-0.0.8a/src/write_inodes.c	2005-06-15 21:41:38.000000000 +0200
+@@ -4,6 +4,7 @@
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include <fcntl.h>
++#include <string.h>
+ #include <unistd.h>
+ 
+ #include "main.h"
