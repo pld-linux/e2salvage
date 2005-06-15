@@ -2,12 +2,13 @@ Summary:	e2salvage - a utility which tries to recover a data from damaged ext2
 Summary(pl):	e2salvage - narzêdzie próbuj±ce odzyskaæ dane z uszkodzonego ext2
 Name:		e2salvage
 Version:	0.0.8a
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/e2salvage/%{name}-%{version}.tbz2
 # Source0-md5:	029608f5f42890aabd1a2c889de859ad
 Patch0:		%{name}-linux_types.patch
+Patch1:		%{name}-gcc4.patch
 URL:		http://e2salvage.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -36,7 +37,8 @@ inne zawiedzie, katalogi s± pod³±czane do g³ównego katalogu.
 
 %prep
 %setup -q
-%patch0
+%patch0 -p0
+%patch1 -p1
 
 %build
 %{__libtoolize}
