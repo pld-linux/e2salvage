@@ -1,0 +1,7 @@
+diff -Nur e2salvage-0.0.8a.orig/src/Makefile.am e2salvage-0.0.8a.am/src/Makefile.am
+--- e2salvage-0.0.8a.orig/src/Makefile.am	2003-10-07 22:49:36.000000000 +0200
++++ e2salvage-0.0.8a.am/src/Makefile.am	2006-08-04 01:09:38.000000000 +0200
+@@ -1,3 +1,2 @@
+ bin_PROGRAMS=e2salvage
+ e2salvage_SOURCES= main.c dirops.c find_dirs.c find_inodes.c find_super.c salvage_dir_blocks.c salvage_dir_inodes.c user_interface.c write_dirs.c write_inodes.c write_super.c
+-CFLAGS= -Wall
