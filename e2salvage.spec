@@ -9,6 +9,7 @@ Source0:	http://dl.sourceforge.net/e2salvage/%{name}-%{version}.tbz2
 # Source0-md5:	029608f5f42890aabd1a2c889de859ad
 Patch0:		%{name}-linux_types.patch
 Patch1:		%{name}-gcc4.patch
+Patch2:		%{name}-am.patch
 URL:		http://e2salvage.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -39,6 +40,7 @@ inne zawiedzie, katalogi s± pod³±czane do g³ównego katalogu.
 %setup -q
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
