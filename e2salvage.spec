@@ -1,5 +1,5 @@
 Summary:	e2salvage - a utility which tries to recover a data from damaged ext2
-Summary(pl.UTF-8):   e2salvage - narzędzie próbujące odzyskać dane z uszkodzonego ext2
+Summary(pl.UTF-8):	e2salvage - narzędzie próbujące odzyskać dane z uszkodzonego ext2
 Name:		e2salvage
 Version:	0.0.8a
 Release:	1
