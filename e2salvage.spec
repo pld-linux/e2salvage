@@ -1,5 +1,5 @@
 Summary:	e2salvage - a utility which tries to recover a data from damaged ext2
-Summary(pl):	e2salvage - narzêdzie próbuj±ce odzyskaæ dane z uszkodzonego ext2
+Summary(pl.UTF-8):   e2salvage - narzÄ™dzie prÃ³bujÄ…ce odzyskaÄ‡ dane z uszkodzonego ext2
 Name:		e2salvage
 Version:	0.0.8a
 Release:	1
@@ -26,15 +26,15 @@ fsck connects the found i-nodes to lost+found directory; e2salvage
 instead tries to recover the directory structure. If all else fails
 the directories are linked to the root.
 
-%description -l pl
-e2salvage to narzêdzie, które próbuje odzyskaæ dane z uszkodzonych
-systemów plików ext2. W przeciwieñstwie do e2fsck nie szuka danych w
-okre¶lonych miejscach i nie próbuje zaufaæ danym, które znajdzie;
-dziêki temu mo¿e obs³u¿yæ du¿o bardziej uszkodzone systemy plików.
+%description -l pl.UTF-8
+e2salvage to narzÄ™dzie, ktÃ³re prÃ³buje odzyskaÄ‡ dane z uszkodzonych
+systemÃ³w plikÃ³w ext2. W przeciwieÅ„stwie do e2fsck nie szuka danych w
+okreÅ›lonych miejscach i nie prÃ³buje zaufaÄ‡ danym, ktÃ³re znajdzie;
+dziÄ™ki temu moÅ¼e obsÅ‚uÅ¼yÄ‡ duÅ¼o bardziej uszkodzone systemy plikÃ³w.
 
-fsck do³±cza znalezione i-wêz³y do katalogu lost+found; e2salvage
-zamiast tego próbuje odtworzyæ strukturê katalogów. Je¶li wszystko
-inne zawiedzie, katalogi s± pod³±czane do g³ównego katalogu.
+fsck doÅ‚Ä…cza znalezione i-wÄ™zÅ‚y do katalogu lost+found; e2salvage
+zamiast tego prÃ³buje odtworzyÄ‡ strukturÄ™ katalogÃ³w. JeÅ›li wszystko
+inne zawiedzie, katalogi sÄ… podÅ‚Ä…czane do gÅ‚Ã³wnego katalogu.
 
 %prep
 %setup -q
