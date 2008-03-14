@@ -1,0 +1,26 @@
+diff -upr e2salvage-0.0.8a./src/main.c e2salvage-0.0.8a/src/main.c
+--- e2salvage-0.0.8a./src/main.c	2003-10-07 22:49:37.000000000 +0200
++++ e2salvage-0.0.8a/src/main.c	2008-03-14 13:03:54.283036506 +0100
+@@ -42,7 +42,6 @@ int main(int argc, char * argv[])
+ 	long sb_auto_find = -1;
+ 	
+ 	struct hd_geometry geo;
+-	struct hd_big_geometry geob;
+ 	struct stat st;
+ 	unsigned long tmp;
+ 
+@@ -96,13 +95,6 @@ int main(int argc, char * argv[])
+ 		fs_size = (unsigned long long)tmp * 512ull;
+ 	}
+ 	else
+-	if (ioctl(i, HDIO_GETGEO_BIG, &geob) == 0) {
+-		fs_size = (unsigned long long) geob.heads
+-			* (unsigned long long) geob.sectors
+-			* (unsigned long long) geob.cylinders
+-			* 512ull;
+-	}
+-	else
+ 	if (ioctl(i, HDIO_GETGEO, &geo) == 0) {
+ 		fs_size = (unsigned long long) geo.heads
+ 			* (unsigned long long) geo.sectors
+Only in e2salvage-0.0.8a/src: main.c~
