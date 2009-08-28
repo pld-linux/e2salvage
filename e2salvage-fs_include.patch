@@ -1,0 +1,55 @@
+diff -burNp e2salvage-0.0.8a/src/main.c e2salvage-0.0.8a-dud/src/main.c
+--- e2salvage-0.0.8a/src/main.c	2003-10-07 22:49:37.000000000 +0200
++++ e2salvage-0.0.8a-dud/src/main.c	2009-08-28 15:35:33.407392037 +0200
+@@ -7,6 +7,7 @@
+ //#include <fcntl.h>
+ #include <linux/fcntl.h> /* need this for O_LARGEFILE */
+ #include <unistd.h>
++#include <linux/fs.h>
+ #include <linux/hdreg.h>
+ #include <time.h>
+ 
+diff -burNp e2salvage-0.0.8a/src/salvage_dir_inodes.c e2salvage-0.0.8a-dud/src/salvage_dir_inodes.c
+--- e2salvage-0.0.8a/src/salvage_dir_inodes.c	2003-10-07 22:49:37.000000000 +0200
++++ e2salvage-0.0.8a-dud/src/salvage_dir_inodes.c	2009-08-28 15:37:54.587378321 +0200
+@@ -7,6 +7,7 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <time.h>
++#include <linux/fs.h>
+ #include <linux/ext2_fs.h>
+ 
+ #include "main.h"
+diff -burNp e2salvage-0.0.8a/src/find_dirs.c e2salvage-0.0.8a-dud/src/find_dirs.c
+--- e2salvage-0.0.8a/src/find_dirs.c	2003-10-07 22:49:37.000000000 +0200
++++ e2salvage-0.0.8a-dud/src/find_dirs.c	2009-08-28 15:39:29.637368404 +0200
+@@ -5,6 +5,7 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <fcntl.h>
++#include <linux/fs.h>
+ #include <linux/ext2_fs.h>
+ 
+ #include "main.h"
+diff -burNp e2salvage-0.0.8a/src/user_interface.c e2salvage-0.0.8a-dud/src/user_interface.c
+--- e2salvage-0.0.8a/src/user_interface.c	2003-10-07 22:49:37.000000000 +0200
++++ e2salvage-0.0.8a-dud/src/user_interface.c	2009-08-28 15:40:48.177360852 +0200
+@@ -5,6 +5,7 @@
+ #include <sys/time.h>
+ #include <fcntl.h>
+ #include <unistd.h>
++#include <linux/fs.h>
+ 
+ #include "disk.h"
+ #include "config.h"
+diff -burNp e2salvage-0.0.8a/src/salvage_dir_blocks.c e2salvage-0.0.8a-dud/src/salvage_dir_blocks.c
+--- e2salvage-0.0.8a/src/salvage_dir_blocks.c	2003-10-07 22:49:37.000000000 +0200
++++ e2salvage-0.0.8a-dud/src/salvage_dir_blocks.c	2009-08-28 15:42:20.767355745 +0200
+@@ -7,6 +7,7 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <time.h>
++#include <linux/fs.h>
+ #include <linux/ext2_fs.h>
+ 
+ #include "main.h"
