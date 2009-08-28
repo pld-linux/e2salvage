@@ -11,6 +11,7 @@ Patch0:		%{name}-linux_types.patch
 Patch1:		%{name}-gcc4.patch
 Patch2:		%{name}-am.patch
 Patch3:		%{name}-no-geob.patch
+Patch4:		%{name}-fs_include.patch
 URL:		http://e2salvage.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -43,6 +44,7 @@ inne zawiedzie, katalogi są podłączane do głównego katalogu.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{__libtoolize}
